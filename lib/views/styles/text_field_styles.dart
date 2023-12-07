@@ -337,12 +337,15 @@ class AppTextFieldStyles {
         return Column(
           children: [
             _baseTextFormFieldWidget(
-
               hint: hint,
               validator: validator,
               textAlign: textAlign,
               keyboardType: TextInputType.text,
               enable: enable,
+              onTap: (){
+                expand.value = !expand.value;
+                FocusScope.of(context).unfocus();
+              },
               controller: thisController,
               onChanged: onChanged,
               suffixWidgetConstraints:

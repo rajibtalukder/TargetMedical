@@ -37,64 +37,59 @@ class FreeTrialScreen extends StatelessWidget {
   Widget checkResultItemWidget() {
     return Padding(
       padding: EdgeInsets.only(top: 8.h),
-      child: InkWell(
-        onTap: () async {},
-        child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
-            decoration: BoxDecoration(
-              color: AppColors.white2,
-              borderRadius: BorderRadius.circular(4.r),
-            ),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 70.h,
-                  child: Expanded(
-                    child: Text(
-                      durationController.freeDuration!.data.description,
-                      style: AppTextStyles.semiBold14
-                          .copyWith(color: AppColors.black),
-                    ),
-                  ),
+      child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
+          decoration: BoxDecoration(
+            color: AppColors.white2,
+            borderRadius: BorderRadius.circular(4.r),
+          ),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 70.h,
+                child: Text(
+                  durationController.freeDuration!.data.description,
+                  style: AppTextStyles.semiBold14
+                      .copyWith(color: AppColors.black),
                 ),
-                SizedBox(height: 10.h),
-                InkWell(
-                  onTap: () {
-                    durationController.postFreeTrial(
-                        durationController.freeDuration!.data.duration).then((value) {
-                          userController.getProfileData();
-                          Get.offAll(MainScreen());
-                          AppKeys.scaffoldKey.currentState?.closeEndDrawer();
-                    });
-                  },
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 16.h,
-                    ),
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: AppColors.blue,
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 4,
-                          spreadRadius: 0,
-                          offset: Offset(0, 1.h),
-                          color: AppColors.black.withOpacity(0.25),
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(4.r),
-                    ),
-                    child: Text(
-                      'সাবমিট ',
-                      style: AppTextStyles.title.copyWith(
-                        color: AppColors.white,
+              ),
+              SizedBox(height: 10.h),
+              InkWell(
+                onTap: () {
+                  durationController.postFreeTrial(
+                      durationController.freeDuration!.data.duration).then((value) {
+                        userController.getProfileData();
+                        Get.offAll(MainScreen());
+                        AppKeys.scaffoldKey.currentState?.closeEndDrawer();
+                  });
+                },
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 16.h,
+                  ),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: AppColors.blue,
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 4,
+                        spreadRadius: 0,
+                        offset: Offset(0, 1.h),
+                        color: AppColors.black.withOpacity(0.25),
                       ),
+                    ],
+                    borderRadius: BorderRadius.circular(4.r),
+                  ),
+                  child: Text(
+                    'সাবমিট ',
+                    style: AppTextStyles.title.copyWith(
+                      color: AppColors.white,
                     ),
                   ),
                 ),
-              ],
-            )),
-      ),
+              ),
+            ],
+          )),
     );
   }
 }

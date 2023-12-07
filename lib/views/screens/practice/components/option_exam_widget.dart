@@ -6,7 +6,6 @@ import 'package:target_medical/models/exam_type_model.dart';
 import 'package:target_medical/views/screens/exam_menu/exam_menu_screen.dart';
 
 import '../../../../controllers/user_controller.dart';
-import '../../buy_package/buy_package_screen.dart';
 
 class OptionExamWidget extends StatelessWidget {
   final String title;
@@ -22,9 +21,11 @@ class OptionExamWidget extends StatelessWidget {
       GetControllers.instance.getPracticeScreenController();
   final UserController userController =
       GetControllers.instance.getUserController();
+  int paidId = 0;
 
   @override
   Widget build(BuildContext context) {
+    paidId = userController.userData.isPaid!;
     return Obx(() {
       if (controller.examController.examTypes.isEmpty) {
         return Container();
@@ -56,7 +57,13 @@ class OptionExamWidget extends StatelessWidget {
                       // userController.userData.isPaid == 0
                       //     ? Get.to(() => BuyPackageScreen())
                       //     : Get.to(() => ExamMenuScreen());
-                      Get.to(() => ExamMenuScreen());
+                      if (paidId == 0) {
+                        Get.to(() => ExamMenuScreen());
+                      } else if (paidId % 2 != 0 && !isBGJ) {
+                        Get.to(() => ExamMenuScreen());
+                      } else if (paidId % 2 == 0 && isBGJ) {
+                        Get.to(() => ExamMenuScreen());
+                      }
                     }),
                 SizedBox(width: 24.w),
                 itemWidget(
@@ -90,7 +97,13 @@ class OptionExamWidget extends StatelessWidget {
                       // userController.userData.isPaid == 0
                       //     ? Get.to(() => BuyPackageScreen())
                       //     : Get.to(() => ExamMenuScreen());
-                      Get.to(() => ExamMenuScreen());
+                      if (paidId == 0) {
+                        Get.to(() => ExamMenuScreen());
+                      } else if (paidId % 2 != 0 && !isBGJ) {
+                        Get.to(() => ExamMenuScreen());
+                      } else if (paidId % 2 == 0 && isBGJ) {
+                        Get.to(() => ExamMenuScreen());
+                      }
                     }),
                 SizedBox(width: 24.w),
                 itemWidget(
@@ -106,7 +119,13 @@ class OptionExamWidget extends StatelessWidget {
                       // userController.userData.isPaid == 0
                       //     ? Get.to(() => BuyPackageScreen())
                       //     : Get.to(() => ExamMenuScreen());
-                      Get.to(() => ExamMenuScreen());
+                      if (paidId == 0) {
+                        Get.to(() => ExamMenuScreen());
+                      } else if (paidId % 2 != 0 && !isBGJ) {
+                        Get.to(() => ExamMenuScreen());
+                      } else if (paidId % 2 == 0 && isBGJ) {
+                        Get.to(() => ExamMenuScreen());
+                      }
                     }),
               ],
             ),
